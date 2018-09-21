@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPFDemo">
+    <Style x:Key="radBase" TargetType="RadioButton">
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#555"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <DockPanel  Background="{TemplateBinding Background}" ToolTip="{TemplateBinding Content}" LastChildFill="False" Width="{TemplateBinding Width}">
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="None" Source="/Images/rdo_no.png"/>
+                        <TextBlock DockPanel.Dock="Left" Margin="3 0 0 0" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="_img" Property="Source" Value="/Images/rdo_yes.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RadioThemeColor" TargetType="RadioButton">
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Background" Value="#e892ca"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid Background="{TemplateBinding Background}" Width="62" Height="35" Margin="{TemplateBinding Margin}">
+                        <Border x:Name="_borderOver" Background="Transparent" BorderBrush="Transparent" BorderThickness="1" Margin="1">
+
+                        </Border>
+                        <Border x:Name="_borderChecked" Visibility="Collapsed" Background="#88000000" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="15" Height="15">
+                            <Path Data="M0,5 5,10 13,1" Margin="2 2 0 0" Stroke="White" StrokeThickness="1"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasContent" Value="True">
+                            <Setter Property="FocusVisualStyle">
+                                <Setter.Value>
+                                    <Style>
+                                        <Setter Property="Control.Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="_borderOver" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="_borderChecked" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
