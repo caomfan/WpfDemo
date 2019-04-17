@@ -8,7 +8,7 @@ namespace WPFDemo.Model
 {
     public class OrgModel
     {
-        public bool IsGrouping { get; set; }
+        public bool IsGrouping { get { return Children != null && Children.Count > 0; } }
         public ObservableCollection<OrgModel> Children { get; set; }
         public string DisplayName { get; set; }
         public string SurName { get; set; }
