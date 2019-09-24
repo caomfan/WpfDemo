@@ -21,21 +21,10 @@ namespace WPFDemo.Controls
             d.SetValue(e.Property, e.NewValue);
         }
 
-
-
         /// <summary>
         /// 选中项列表
         /// </summary>
-        public ObservableCollection<MultiCbxBaseData> ChekedItems
-        {
-            get { return (ObservableCollection<MultiCbxBaseData>)GetValue(ChekedItemsProperty); }
-            set { SetValue(ChekedItemsProperty, value); }
-        }
-
-        public static readonly DependencyProperty ChekedItemsProperty =
-            DependencyProperty.Register("ChekedItems", typeof(ObservableCollection<MultiCbxBaseData>), typeof(MultiComboBox), new PropertyMetadata(new ObservableCollection<MultiCbxBaseData>(), OnPropertyChanged));
-
-
+        public ObservableCollection<MultiCbxBaseData> ChekedItems=new ObservableCollection<MultiCbxBaseData>(); 
 
         /// <summary>
         /// ListBox竖向列表
